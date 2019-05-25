@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+     <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <br>
+                <h3>Usage</h3>
+                <br>
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h4 class="card-title">Get Captcha</h4>
+                        <h5>Request Parameters</h5>
+                        <ul>
+                            <li>Url: <a href="http://{{ request.get_host }}{% url 'api_get_captcha' %}">
+                                http://{{ request.get_host }}{% url 'api_get_captcha' %}</a>
+                            </li>
+                        </ul>
+                        <h5>Response</h5>
+                        <ul>
+                            <li>captcha - captcha id</li>
+                            <li>image - captcha image if exist</li>
+                        </ul>
+                        <br>
+                    </div>
+                </div>
+                <br>
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h4 class="card-title">Test Captcha</h4>
+                        <h5>Request Parameters</h5>
+                        <ul>
+                            <li>Url: <a href="http://{{ request.get_host }}{% url 'api_test_captcha' %}">
+                                http://{{ request.get_host }}{% url 'api_test_captcha' %}</a>
+                            </li>
+                            <li>captcha - a captcha id</li>
+                            <li>value - the value of the captcha</li>
+                        </ul>
+                        <h5>Response</h5>
+                        <ul>
+                            <li>test - True or False.</li>
+                            <li>message - Error message if any.</li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <h3>Example</h3>
+                <br>
+                <div class="card">
+                    <div class="card-body bg-light">
+                        <p>Get a valid captcha id</p>
+                        <code>curl "http://{{ request.get_host }}{% url 'api_get_captcha' %}"</code>
+                        <br><br><p>Should give you something like</p>
+                        <div class="card card-body">
+                            <pre>
+{
+    "captcha": 438,
+    "image": "http://localhost:8000/static/captcha/9MQ_Ehbeb30c94-48c3-11e9-86f1-0242ac110002.png"
+}</pre>
+                        </div>
+                        <p>Check the value</p>
+                        <code>curl "http://{{ request.get_host }}{% url 'api_test_captcha' %}?captcha=438&value=123456" </code>
+                        <br><br><p>Will give you</p>
+                        <div class="card card-body" >
+                            <pre>
+{
+    "test": true
+}</pre>
+                        </div>
+                        <p>if the value is correct or</p>
+                        <div class="card card-body">
+                        <pre>
+{
+    "test": false
+}</pre>
+                        </div>
+                        <p>otherwise</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Dr.Captcha | Telling Humans and Computers Apart{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    {% load static %}
+                    <img src="{% static 'images/logo.png'%}" alt="Dr.captcha" class="img-fluid">
+                </div>
+                <div class="col-sm-9">
+                    <h1>Dr.Captcha</h1>
+                    <p>Telling Humans and Computers Apart.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <h3>What is captcha?</h3>
+                <p>A CAPTCHA is a program that protects websites against bots by generating and grading tests that humans can pass but current computer programs cannot. For example, humans can read distorted text as the one shown below, but current computer programs can't:</p>
+                <img src="{% static 'images/example-captcha.png'%}" alt="captcha"><br><br>
+            </div>
+            <div class="col-sm-3">
+                <h3>Get a Free CAPTCHA For Your Site</h3>
+                <p>Join Dr.captcha a free, secure and accessible CAPTCHA implementation.</p>
+                <button class="btn btn-primary">Register</button>
+            </div>
+            <div class="col-sm-3">
+                <h3>Test Dr.Captcha</h3>
+                <p>Click this button to test the captcha:</p>
+                <a class="btn btn-primary" href="test-captcha">Test Dr.Captcha</a>
+            </div>
+            <div class="col-sm-3">
+                <h3>What captcha means?</h3>
+                <p>The term CAPTCHA (for Completely Automated Public Turing Test To Tell Computers and Humans Apart) was coined in 2000 by Luis von Ahn, Manuel Blum, Nicholas Hopper and John Langford of Carnegie Mellon University.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
